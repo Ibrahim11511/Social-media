@@ -1,0 +1,16 @@
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+:root {
+  --dark-blue: #4267b2;
+  --light-blue: #3b5998;
+  --white-blue: #8b9dc3;
+  --white-second: #d2dae2;
+  --white: #fff;
+  --black: #090909;
+  --gary: #d2dae2;
+  --red: #ff5a5f;
+  --dark-box-shadow: 0 0 15px 10px #212121;
+}

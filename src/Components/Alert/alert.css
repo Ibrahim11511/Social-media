@@ -1,0 +1,39 @@
+.alertWrapper {
+  padding: 10px 20px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  opacity: 0.7;
+  position: fixed;
+  bottom: 30px;
+  right: -50%;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.alertWrapper.active {
+  right: 50px;
+}
+
+.alertWrapper p {
+  color: var(--white);
+}
+
+.alertWrapper span svg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
