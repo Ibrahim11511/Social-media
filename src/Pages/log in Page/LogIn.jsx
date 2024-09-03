@@ -24,7 +24,7 @@ export default function LogIn() {
     axios
       .post("https://tarmeezacademy.com/api/v1/login", loginValues)
       .then((response) => {
-        Cookies.set("user", JSON.stringify(response.data));
+        Cookies.set("user", JSON.stringify(response.data), { expires: 1 });
         navigateToHome("/home");
       })
       .catch(function (error) {
@@ -84,7 +84,7 @@ export default function LogIn() {
         </span>
         <p>
           If you didn't have an account click{" "}
-          <Link to={"/register"}>here...</Link>
+          <Link to={"/auth/register"}>here...</Link>
         </p>
         <input type="submit" value={"LOGIN"} />
       </form>

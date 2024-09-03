@@ -9,15 +9,6 @@ import AuthRoot from "./AuthRoot";
 const router = createBrowserRouter([
   {
     path: "",
-    element: <AuthRoot />,
-    children: [
-      { index: true, element: <LogIn /> },
-      { path: "/login", element: <LogIn /> },
-      { path: "/register", element: <Register /> },
-    ],
-  },
-  {
-    path: "/home",
     element: (
       <Protected>
         <MasterRoot />
@@ -25,7 +16,16 @@ const router = createBrowserRouter([
     ),
     children: [
       { index: true, element: <Home /> },
-      { path: "/home", element: <Home /> },
+      { path: "home", element: <Home /> },
+    ],
+  },
+  {
+    path: "auth",
+    element: <AuthRoot />,
+    children: [
+      { index: true, element: <LogIn /> },
+      { path: "login", element: <LogIn /> },
+      { path: "register", element: <Register /> },
     ],
   },
 ]);

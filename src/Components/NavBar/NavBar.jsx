@@ -7,6 +7,9 @@ export default function NavBar() {
         <li className="navBarItem">
           <NavLink to={"/home"}>Home</NavLink>
         </li>
+        <li className="navBarItem">
+          <NavLink to={"/profile"}>Profile</NavLink>
+        </li>
       </ul>
     </nav>
   );

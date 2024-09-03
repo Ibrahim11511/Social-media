@@ -1,12 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
-import { UserContext } from "./context/userContext";
 import { Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function Protected({ children }) {
-  const { user } = useContext(UserContext);
-  if (Object.keys(user).length === 0) {
-    return <Navigate to="/login" replace />;
-  }
-  return children;
+  if (Cookies.get("user")) {
+    return children;
+  } else return <Navigate to="/auth" replace />;
 }

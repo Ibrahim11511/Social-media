@@ -15,9 +15,9 @@ const getUserFromCookies = () => {
 };
 
 function App() {
-  let { setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   useEffect(() => {
-    setUser(getUserFromCookies());
+    setUser(() => getUserFromCookies());
   }, []);
 
   return (
