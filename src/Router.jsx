@@ -5,6 +5,7 @@ import Home from "./Pages/Home Page/Home";
 import Protected from "./Protected";
 import MasterRoot from "./MasterRoot";
 import AuthRoot from "./AuthRoot";
+import SinglePage from "./Pages/Single Page/SinglePage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "home", element: <Home /> },
+      { path: "profile", element: <SinglePage /> },
     ],
   },
   {
