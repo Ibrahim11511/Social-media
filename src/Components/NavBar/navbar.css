@@ -1,69 +1,86 @@
 .navBar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px 0;
-    background-color: var(--dark-blue);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  background-color: var(--dark-blue);
 }
 
 .navBar .navBar_list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navBar .navBar_list .navBarItem a {
-    background-color: var(--red);
-    padding: 10px 15px;
-    color: var(--white);
-    margin-inline: 10px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    box-shadow: 0 0 10px 5px #e4e4e431;
+  background-color: var(--red);
+  padding: 10px 15px;
+  color: var(--white);
+  margin-inline: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  box-shadow: 0 0 10px 5px #10101031;
 }
 
 .navBar .navBar_list .navBarItem a.active {
-    background-color: var(--light-blue);
+  background-color: var(--light-blue);
 }
 
 .navBar .info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navBar .info .name {
-    color: var(--white);
-    font-size: 20px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-inline: 20px;
-    border: 1px solid var(--white);
-    padding: 5px 20px;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-inline: 20px;
+  border: 1px solid var(--white);
+  padding: 5px 20px;
+}
+
+.navBar .info .name:hover {
+  background-color: var(--red);
+  color: var(--white);
+  box-shadow: 5px 5px 20px 5px #1010109a, -5px -5px 20px 5px #ffffff9f;
+  transform: scale(1.06);
+  -webkit-transform: scale(1.06);
+  -moz-transform: scale(1.06);
+  -ms-transform: scale(1.06);
+  -o-transform: scale(1.06);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-color: var(--red);
 }
 
 .navBar .info .logOutBtn {
-    padding: 10px 20px;
-    color: var(--white);
-    background-color: red;
-    font-size: 18px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    cursor: pointer;
+  padding: 10px 20px;
+  color: var(--white);
+  background-color: red;
+  font-size: 18px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  cursor: pointer;
 }
 
 .navBar .info .logOutBtn:hover {
-    transform: scale(1.05);
-    -webkit-transform: scale(1.05);
-    -moz-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    -o-transform: scale(1.05);
-    box-shadow: 0 0 10px 5px #10101031;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  box-shadow: 0 0 10px 5px #10101031;
 }
