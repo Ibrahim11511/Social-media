@@ -6,6 +6,7 @@ import Protected from "./Protected";
 import MasterRoot from "./MasterRoot";
 import AuthRoot from "./AuthRoot";
 import SinglePage from "./Pages/Single Page/SinglePage";
+import CreatePost from "./Pages/Create Post/CreatePost";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "home", element: <Home /> },
       { path: "profile", element: <SinglePage /> },
+      { path: "createpost", element: <CreatePost /> },
     ],
   },
   {

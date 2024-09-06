@@ -25,6 +25,9 @@ export default function NavBar() {
         <li className="navBarItem">
           <NavLink to={""}>My Posts</NavLink>
         </li>
+        <li className="navBarItem">
+          <NavLink to={"/createpost"}>Create Post</NavLink>
+        </li>
       </ul>
       <div className="info">
         <span className="name">{user__name}</span>

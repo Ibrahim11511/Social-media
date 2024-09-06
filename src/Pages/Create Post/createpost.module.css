@@ -1,0 +1,103 @@
+.CreatePost {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.CreatePost form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  padding-inline: 50px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+}
+
+.pictureWrapper {
+  position: relative;
+  margin: 5px;
+}
+
+.pictureWrapper input {
+  position: absolute;
+  z-index: -1;
+  left: 10px;
+  top: 0;
+}
+
+.pictureWrapper label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark-blue);
+  z-index: 1;
+  padding: 10px 20px;
+  color: var(--white);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  box-shadow: 0 0 10px 5px #10101031;
+  cursor: pointer;
+  margin-inline: 5px;
+  width: 100%;
+}
+
+svg {
+  cursor: pointer;
+  display: inline-block;
+  background-color: transparent;
+  font-size: 40px;
+  margin: 5px;
+  filter: drop-shadow(0px 0px 4px var(--dark-blue));
+  -webkit-filter: drop-shadow(0px 0px 4px var(--dark-blue));
+}
+
+.pictureWrapper label:hover {
+  background-color: var(--red);
+  color: var(--dark-blue);
+}
+
+form input[type="text"] {
+  border: 1px solid var(--dark-blue);
+  margin-inline: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+form input[type="submit"] {
+  padding: 10px 20px;
+  margin-inline: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  box-shadow: 0 0 10px 5px #10101031;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  transform: scale(1.08);
+  -webkit-transform: scale(1.08);
+  -moz-transform: scale(1.08);
+  -ms-transform: scale(1.08);
+  -o-transform: scale(1.08);
+}
+
+form input[type="text"]:is(:hover, :focus) {
+  box-shadow: 0 0 10px 5px #10101031;
+}
