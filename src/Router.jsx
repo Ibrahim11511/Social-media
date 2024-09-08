@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "home", element: <Home /> },
-      { path: "profile", element: <SinglePage /> },
+      { path: "profilePage/:user__ID", element: <SinglePage /> },
       { path: "createPost", element: <CreatePost /> },
       { path: "postPage/:post__ID", element: <PostPage /> },
     ],
@@ -37,4 +37,3 @@ const router = createBrowserRouter([
 ]);
 
 export { router };
-4;

@@ -57,6 +57,7 @@ export default function Home() {
           name={post.author.name}
           postDate={post.created_at}
           postID={post.id}
+          userID={post.author.id}
         />
       ))}
     </div>

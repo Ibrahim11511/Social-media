@@ -45,7 +45,6 @@
 
 .pictureWrapper label:hover {
   background-color: var(--red);
-  color: var(--dark-blue);
   box-shadow: 0 0 10px 5px #10101031;
 }
 

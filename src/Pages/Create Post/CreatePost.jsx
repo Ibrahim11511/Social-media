@@ -4,6 +4,7 @@ import Styles from "./createpost.module.css";
 import { UserContext } from "../../context/userContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 export default function CreatePost() {
   const { user } = useContext(UserContext);
   const [newPost, setNewPost] = useState({
@@ -11,7 +12,7 @@ export default function CreatePost() {
     body: "",
     imagePreview: null,
   });
-
+  const Navigate = useNavigate("");
   const handelPostImage = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -40,6 +41,7 @@ export default function CreatePost() {
       })
       .then(() => {
         setNewPost({ title: "", body: "", imagePreview: null });
+        Navigate("/home");
         toast.success("Your Post Successfully Created");
       })
       .catch(function (error) {
@@ -80,12 +82,15 @@ export default function CreatePost() {
         <input type="submit" value="Create" />
       </form>
       <Post
-        commentsCount={0}
-        name={user?.user?.name}
-        userImage={user?.user?.profile_image}
         title={newPost.title}
         body={newPost.body}
+        userImage={user?.user?.profile_image}
         postImage={newPost.imagePreview}
+        commentsCount={0}
+        name={user?.user?.name}
+        postDate={"1 minute ago"}
+        postID={""}
+        userID={""}
       />
     </div>
   );

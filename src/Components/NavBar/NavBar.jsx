@@ -1,17 +1,15 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
 
 export default function NavBar() {
-  const [user__name, setuser__name] = useState("");
-  const navigateToLogIn = useNavigate("");
-  useEffect(() => {
-    setuser__name(JSON.parse(Cookies.get("user")).user.name);
-  }, []);
+  const { user } = useContext(UserContext);
+  const Navigate = useNavigate("");
   const handelLogOut = () => {
     Cookies.remove("user");
-    navigateToLogIn("auth");
+    Navigate("auth");
   };
   return (
     <nav className="navBar">
@@ -20,17 +18,14 @@ export default function NavBar() {
           <NavLink to={"/home"}>Home</NavLink>
         </li>
         <li className="navBarItem">
-          <NavLink to={"/profile"}>Profile</NavLink>
-        </li>
-        <li className="navBarItem">
-          <NavLink to={""}>My Posts</NavLink>
+          <NavLink to={`/profilePage/${user?.user?.id}`}>Profile</NavLink>
         </li>
         <li className="navBarItem">
           <NavLink to={"/createPost"}>Create Post</NavLink>
         </li>
       </ul>
       <div className="info">
-        <span className="name">{user__name}</span>
+        <span className="name">{user?.user?.name}</span>
         <button className="logOutBtn" onClick={handelLogOut}>
           Log Out
         </button>

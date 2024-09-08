@@ -1,14 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./postpage.module.css";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../../context/userContext";
+import { toast } from "react-toastify";
 export default function Post() {
   const [comment, setComment] = useState("");
+  const [allComment, setAllComment] = useState([]);
   const [postData, setPostData] = useState([]);
   const { user } = useContext(UserContext);
   const { post__ID } = useParams();
+  const Navigate = useNavigate("");
 
   const headers = {
     Accept: "application/json",
@@ -24,7 +27,13 @@ export default function Post() {
         { headers: headers }
       )
       .then(() => {
+        toast.success("Comment Successfully");
         setComment("");
+      })
+      .catch((error) => {
+        Object.entries(error.response.data.errors).map(([, value]) =>
+          toast.error(`${value}`)
+        );
       });
   };
 
@@ -33,6 +42,8 @@ export default function Post() {
       .get(`https://tarmeezacademy.com/api/v1/posts/${post__ID}`)
       .then((response) => {
         setPostData(() => response.data.data);
+        setAllComment(response.data.data.comments);
+        console.log(response.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -41,26 +52,31 @@ export default function Post() {
 
   useEffect(() => {
     getPostData();
-  }, [post__ID]);
+  }, [post__ID, comment]);
 
   return (
     <div className={styles.postContainer}>
       <div className={styles.userProfile}>
-        {typeof userImage === "object" ? (
+        {typeof postData?.author?.profile_image === "string" ? (
           <img
             src={postData.author.profile_image}
             alt="User"
             className={styles.profileImage}
+            onClick={() => Navigate(`/profilePage/${postData?.author?.id}`)}
           />
         ) : (
           <img
             src={"/public/8380015-removebg-preview.png"}
             alt="User"
             className={styles.profileImage}
+            onClick={() => Navigate(`/profilePage/${postData?.author?.id}`)}
           />
         )}
         <div className={styles.userInfo}>
-          <Link to={"/profile"} className={styles.userName}>
+          <Link
+            to={`/profilePage/${postData?.author?.id}`}
+            className={styles.userName}
+          >
             {postData?.author?.name}
           </Link>
           <span className={styles.postDate}>{postData.created_at}</span>
@@ -81,6 +97,40 @@ export default function Post() {
       <div className={styles.commentSection}>
         <div className={styles.commentCount}>
           {postData.comments_count} Comments
+        </div>
+        <div className={styles.allCommentsWrapper}>
+          {allComment.map((comment) => (
+            <div
+              className={styles.singleComment}
+              key={`comment-key-${comment.id}`}
+            >
+              <div className={styles.commentAuthor}>
+                {typeof comment?.author?.profile_image === "object" ? (
+                  <img
+                    src="/public/8380015-removebg-preview.png"
+                    alt="User"
+                    className={styles.commentAuthorImage}
+                    onClick={() =>
+                      Navigate(`/profilePage/${comment?.author?.id}`)
+                    }
+                  />
+                ) : (
+                  <img
+                    src={comment?.author?.profile_image}
+                    alt="User"
+                    className={styles.commentAuthorImage}
+                    onClick={() =>
+                      Navigate(`/profilePage/${comment?.author?.id}`)
+                    }
+                  />
+                )}
+                <Link to={`/profilePage/${comment?.author?.id}`}>
+                  {comment.author.name}
+                </Link>
+              </div>
+              <p>{comment.body}</p>
+            </div>
+          ))}
         </div>
         <div className={styles.commentInputWrapper}>
           <input

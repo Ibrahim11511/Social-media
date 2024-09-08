@@ -9,17 +9,17 @@ import Cookies from "js-cookie";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const getUserFromCookies = () => {
-  if (Cookies.get("user")) {
-    return JSON.parse(Cookies.get("user"));
-  }
-  return {};
-};
-
 function App() {
-  const { setUser } = useContext(UserContext);
+  const getUserFromCookies = () => {
+    if (Cookies.get("user")) {
+      return JSON.parse(Cookies.get("user"));
+    }
+    return {};
+  };
+  const { user, setUser } = useContext(UserContext);
   useEffect(() => {
     setUser(() => getUserFromCookies());
+    console.log(user);
   }, []);
 
   return (

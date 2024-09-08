@@ -14,6 +14,7 @@ export default function Post({
   name,
   postDate,
   postID,
+  userID,
 }) {
   const [comment, setComment] = useState("");
   const [comment_count, setComment_count] = useState(commentsCount);
@@ -45,10 +46,6 @@ export default function Post({
       });
   };
 
-  const openSinglePostPage = () => {
-    Navigate(`/postPage/${postID}`);
-  };
-
   return (
     <div className={styles.postContainer}>
       <div className={styles.userProfile}>
@@ -57,19 +54,28 @@ export default function Post({
             src={"/public/8380015-removebg-preview.png"}
             alt="User"
             className={styles.profileImage}
+            onClick={() => Navigate(`/profilePage/${userID}`)}
           />
         ) : (
-          <img src={userImage} alt="User" className={styles.profileImage} />
+          <img
+            src={userImage}
+            alt="User"
+            className={styles.profileImage}
+            onClick={() => Navigate(`/profilePage/${userID}`)}
+          />
         )}
         <div className={styles.userInfo}>
-          <Link to={"/profile"} className={styles.userName}>
+          <Link to={`/profilePage/${userID}`} className={styles.userName}>
             {name}
           </Link>
           <span className={styles.postDate}>{postDate}</span>
         </div>
       </div>
 
-      <div className={styles.postContent} onClick={openSinglePostPage}>
+      <div
+        className={styles.postContent}
+        onClick={() => Navigate(`/postPage/${postID}`)}
+      >
         <h2>{title}</h2>
         <p>{body}</p>
         {typeof postImage === "string" ? (
