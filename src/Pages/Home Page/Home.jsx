@@ -56,6 +56,7 @@ export default function Home() {
           commentsCount={post.comments_count}
           name={post.author.name}
           postDate={post.created_at}
+          postID={post.id}
         />
       ))}
     </div>

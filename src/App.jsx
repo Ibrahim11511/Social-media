@@ -6,6 +6,8 @@ import { UserContext } from "./context/userContext.jsx";
 import { useContext, useEffect } from "react";
 import { router } from "./Router";
 import Cookies from "js-cookie";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const getUserFromCookies = () => {
   if (Cookies.get("user")) {
@@ -22,6 +24,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <RouterProvider router={router}></RouterProvider>
     </>
   );

@@ -1,30 +1,38 @@
 import { Link, useNavigate } from "react-router-dom";
 import Styles from "../log in Page/login.module.css";
-import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { AlertContext } from "../../context/alertContext";
-import Alert from "../../Components/Alert/Alert";
+import { toast } from "react-toastify";
+import { useState } from "react";
 export default function Register() {
   const [registerValues, setRegisterValues] = useState({
     name: "User",
     username: "",
-    image: "/public/8380015-removebg-preview.png",
     password: "",
     email: "",
   });
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   let formData = new FormData();
-  const { alertActive, hideAlert, showAlert } = useContext(AlertContext);
-  const [errors, setErrors] = useState("");
   const navigateToHome = useNavigate();
+
+  const handelProfilePicture = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    if (file) {
+      setRegisterValues((prev) => ({ ...prev, image: file }));
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        setRegisterValues((prev) => ({ ...prev, imagePreview: reader.result }));
+      };
+    }
+  };
 
   const handelRegister = (e) => {
     formData.append("name", registerValues.name);
     formData.append("username", registerValues.username);
-    formData.append("image", registerValues.image);
+    if (registerValues.image) formData.append("image", registerValues.image);
     formData.append("password", registerValues.password);
     formData.append("email", registerValues.email);
     e.preventDefault();
@@ -33,33 +41,18 @@ export default function Register() {
       .then((response) => {
         console.log(response);
         Cookies.set("user", JSON.stringify(response.data), { expires: 1 });
+        toast.success("Sign Up Successfully");
         navigateToHome("/home");
       })
       .catch(function (error) {
-        console.log(error);
-        setErrors(
-          Object.entries(error.response.data.errors)
-            .map(([, value]) => `${value}`)
-            .join(" ")
+        Object.entries(error.response.data.errors).map(([, value]) =>
+          toast.error(`${value}`)
         );
-        showAlert();
       });
-  };
-
-  const handelHideAlert = () => {
-    setTimeout(() => {
-      hideAlert();
-    }, 8000);
   };
 
   return (
     <div className={`${Styles.register}`}>
-      {alertActive ? (
-        <>
-          <Alert message={`${JSON.stringify(errors)}`} type="error" />
-          {handelHideAlert()}
-        </>
-      ) : null}
       <form onSubmit={handelRegister}>
         <h2>Create new account</h2>
         <input
@@ -84,16 +77,18 @@ export default function Register() {
             className={Styles.inputfile}
             name="picture"
             id="file"
-            onChange={(e) =>
-              setRegisterValues((prev) => ({
-                ...prev,
-                image: e.target.files[0],
-              }))
-            }
+            onChange={handelProfilePicture}
           />
           <label htmlFor="file">Choose Your Profile Picture</label>
           <div className={Styles.image}>
-            <img src={registerValues.image} alt="Preview picture" />
+            <img
+              src={
+                registerValues.imagePreview
+                  ? registerValues.imagePreview
+                  : "/public/8380015-removebg-preview.png"
+              }
+              alt="Preview picture"
+            />
           </div>
         </div>
         <span className={Styles.passwordWrapper}>

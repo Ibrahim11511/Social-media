@@ -7,6 +7,7 @@ import MasterRoot from "./MasterRoot";
 import AuthRoot from "./AuthRoot";
 import SinglePage from "./Pages/Single Page/SinglePage";
 import CreatePost from "./Pages/Create Post/CreatePost";
+import PostPage from "./Pages/Post Page/PostPage";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,8 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "home", element: <Home /> },
       { path: "profile", element: <SinglePage /> },
-      { path: "createpost", element: <CreatePost /> },
+      { path: "createPost", element: <CreatePost /> },
+      { path: "postPage/:post__ID", element: <PostPage /> },
     ],
   },
   {

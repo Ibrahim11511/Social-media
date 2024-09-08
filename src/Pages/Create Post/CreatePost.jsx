@@ -1,9 +1,9 @@
-import { MdDeleteForever } from "react-icons/md";
 import { useContext, useState } from "react";
 import Post from "../../Components/Post/Post";
 import Styles from "./createpost.module.css";
 import { UserContext } from "../../context/userContext";
 import axios from "axios";
+import { toast } from "react-toastify";
 export default function CreatePost() {
   const { user } = useContext(UserContext);
   const [newPost, setNewPost] = useState({
@@ -13,7 +13,6 @@ export default function CreatePost() {
   });
 
   const handelPostImage = (e) => {
-    console.log("start handel picture");
     const file = e.target.files[0];
     const reader = new FileReader();
     if (file) {
@@ -41,9 +40,12 @@ export default function CreatePost() {
       })
       .then(() => {
         setNewPost({ title: "", body: "", imagePreview: null });
+        toast.success("Your Post Successfully Created");
       })
       .catch(function (error) {
-        console.log(error);
+        Object.entries(error.response.data.errors).map(([, value]) =>
+          toast.error(`${value}`)
+        );
       });
   };
 
@@ -75,7 +77,6 @@ export default function CreatePost() {
           />
           <label htmlFor="file">Choose Your Post Image</label>
         </div>
-        <MdDeleteForever />
         <input type="submit" value="Create" />
       </form>
       <Post

@@ -123,13 +123,16 @@
   position: absolute;
   top: 50%;
   right: 10px;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  color: #fff;
-  cursor: pointer;
+  transform: translateY(-60%);
+  -webkit-transform: translateY(-60%);
+  -moz-transform: translateY(-60%);
+  -ms-transform: translateY(-60%);
+  -o-transform: translateY(-60%);
+  font-size: 30px;
+}
+
+.passwordWrapper svg path {
+  color: var(--dark-blue);
 }
 
 .logIn form [type="file"],
