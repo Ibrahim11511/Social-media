@@ -34,6 +34,7 @@ export default function Post({
         { headers: headers }
       )
       .then(() => {
+        toast.success("Comment Successfully");
         setComment_count(() => comment_count + 1);
         setComment("");
       })
