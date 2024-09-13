@@ -7,12 +7,28 @@
   width: 100%;
   background-color: #fff;
   box-shadow: 0 0 10px 5px #10101031;
+  position: relative;
 }
 
 .userProfile {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
+}
+
+.deleteBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--red);
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  cursor: pointer;
 }
 
 .userProfile img,

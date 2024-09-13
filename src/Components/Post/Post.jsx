@@ -6,6 +6,7 @@ import axios from "axios";
 import { UserContext } from "../../context/userContext";
 import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { ForcedRender } from "../../context/forcedRender";
 export default function Post({
   title,
   body,
@@ -20,6 +21,7 @@ export default function Post({
   const [comment, setComment] = useState("");
   const [comment_count, setComment_count] = useState(commentsCount);
   const { user } = useContext(UserContext);
+  const { forcedRender, setForcedRender } = useContext(ForcedRender);
   const Navigate = useNavigate("");
 
   const headers = {
@@ -41,14 +43,34 @@ export default function Post({
         setComment("");
       })
       .catch((error) => {
-        Object.entries(error.response.data.errors).map(([, value]) =>
+        Object.entries(error?.response?.data?.errors).map(([, value]) =>
           toast.error(`${value}`)
         );
       });
   };
 
+  const handelDeletePost = () => {
+    const headers = {
+      "Content-type": "multipart/form-data",
+      authorization: `Bearer ${user.token}`,
+    };
+    axios
+      .delete(`https://tarmeezacademy.com/api/v1/posts/${postID}`, {
+        headers: headers,
+      })
+      .then(() => {
+        setForcedRender(!forcedRender);
+        toast.success("Your Post Successfully Deleted");
+      });
+  };
+
   return (
     <div className={styles.postContainer}>
+      {user.user.id == userID ? (
+        <button className={styles.deleteBtn} onClick={handelDeletePost}>
+          Delete
+        </button>
+      ) : null}
       <div className={styles.userProfile}>
         {typeof userImage === "object" ? (
           <FaUser />
@@ -60,6 +82,7 @@ export default function Post({
             onClick={() => Navigate(`/profilePage/${userID}`)}
           />
         )}
+
         <div className={styles.userInfo}>
           <Link to={`/profilePage/${userID}`} className={styles.userName}>
             {name}

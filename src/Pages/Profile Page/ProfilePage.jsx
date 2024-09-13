@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FaUser } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Styles from "./profilepage.module.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Post from "../../Components/Post/Post";
+import { ForcedRender } from "../../context/forcedRender";
 export default function SinglePage() {
   const { user__ID } = useParams();
   const [userData, setUserData] = useState([]);
   const [userPosts, setUserPosts] = useState([]);
+  const { forcedRender } = useContext(ForcedRender);
 
   const getUserData = () => {
     axios
@@ -34,7 +36,7 @@ export default function SinglePage() {
   useEffect(() => {
     getUserData();
     getUserPosts();
-  }, []);
+  }, [forcedRender]);
   return (
     <div className={Styles.profilePage}>
       <div className={Styles.header}>
@@ -49,7 +51,7 @@ export default function SinglePage() {
             />
           )}
           <span>Name : {userData.name}</span>
-          <span>UserName :@0{userData.username}</span>
+          <span>UserName :@{userData.username}</span>
         </div>
         <div className={Styles.rightSide}>
           {userData.email === null ? (

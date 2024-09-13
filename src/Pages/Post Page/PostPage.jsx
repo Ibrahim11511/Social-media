@@ -7,11 +7,12 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../../context/userContext";
 import { toast } from "react-toastify";
+import { ForcedRender } from "../../context/forcedRender";
 export default function Post() {
   const [comment, setComment] = useState("");
   const [allComment, setAllComment] = useState([]);
   const [postData, setPostData] = useState([]);
-  const [render, setRender] = useState(true);
+  const { forcedRender, setForcedRender } = useContext(ForcedRender);
   const { user } = useContext(UserContext);
   const { post__ID } = useParams();
   const Navigate = useNavigate("");
@@ -32,7 +33,7 @@ export default function Post() {
       .then(() => {
         toast.success("Comment Successfully");
         setComment("");
-        setRender(!render);
+        setForcedRender(!forcedRender);
       })
       .catch((error) => {
         Object.entries(error.response.data.errors).map(([, value]) =>
@@ -55,7 +56,7 @@ export default function Post() {
 
   useEffect(() => {
     getPostData();
-  }, [render]);
+  }, [forcedRender]);
 
   return (
     <div className={styles.postContainer}>

@@ -2,11 +2,13 @@
 import axios from "axios";
 import Post from "../../Components/Post/Post";
 import Styles from "./home.module.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ForcedRender } from "../../context/forcedRender";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState({ currentPage: 1, lastPage: 5 });
+  const { forcedRender } = useContext(ForcedRender);
 
   const getPost = () => {
     axios
@@ -43,7 +45,7 @@ export default function Home() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [page.currentPage]);
+  }, [page.currentPage, forcedRender]);
 
   return (
     <div className={Styles.homePage}>
