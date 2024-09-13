@@ -60,6 +60,12 @@
   margin-bottom: 12px;
 }
 
+.postContent p,
+.postContent h2 {
+  word-break: break-all;
+  max-width: 100%;
+}
+
 .postImage {
   width: 100%;
   border-radius: 8px;
