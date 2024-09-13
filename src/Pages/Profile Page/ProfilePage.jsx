@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { FaUser } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import Styles from "./profilepage.module.css";
 import { useParams } from "react-router-dom";
@@ -39,11 +40,7 @@ export default function SinglePage() {
       <div className={Styles.header}>
         <div className={Styles.leftSide}>
           {typeof userData.profile_image === "object" ? (
-            <img
-              src={"/public/8380015-removebg-preview.png"}
-              alt="User"
-              className={Styles.profileImage}
-            />
+            <FaUser />
           ) : (
             <img
               src={userData?.profile_image}
