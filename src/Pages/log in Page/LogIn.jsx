@@ -22,6 +22,9 @@ export default function LogIn() {
       .post("https://tarmeezacademy.com/api/v1/login", loginValues)
       .then((response) => {
         Cookies.set("user", JSON.stringify(response.data), { expires: 1 });
+        Cookies.set("password", JSON.stringify(loginValues.password), {
+          expires: 1,
+        });
         toast.success("Login Successfully");
         navigateToHome("/home");
       })

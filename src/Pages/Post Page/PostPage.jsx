@@ -9,6 +9,7 @@ export default function Post() {
   const [comment, setComment] = useState("");
   const [allComment, setAllComment] = useState([]);
   const [postData, setPostData] = useState([]);
+  const [render, setRender] = useState(true);
   const { user } = useContext(UserContext);
   const { post__ID } = useParams();
   const Navigate = useNavigate("");
@@ -29,6 +30,7 @@ export default function Post() {
       .then(() => {
         toast.success("Comment Successfully");
         setComment("");
+        setRender(!render);
       })
       .catch((error) => {
         Object.entries(error.response.data.errors).map(([, value]) =>
@@ -43,7 +45,6 @@ export default function Post() {
       .then((response) => {
         setPostData(() => response.data.data);
         setAllComment(response.data.data.comments);
-        console.log(response.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -52,7 +53,7 @@ export default function Post() {
 
   useEffect(() => {
     getPostData();
-  }, [post__ID, comment]);
+  }, [render]);
 
   return (
     <div className={styles.postContainer}>

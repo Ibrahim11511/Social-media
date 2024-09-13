@@ -3,6 +3,7 @@ import axios from "axios";
 import Post from "../../Components/Post/Post";
 import Styles from "./home.module.css";
 import { useEffect, useState } from "react";
+
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState({ currentPage: 1, lastPage: 5 });

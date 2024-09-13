@@ -77,7 +77,7 @@ export default function CreatePost() {
             id="file"
             onChange={handelPostImage}
           />
-          <label htmlFor="file">Choose Your Post Image</label>
+          <label htmlFor="file">Picture</label>
         </div>
         <input type="submit" value="Create" />
       </form>

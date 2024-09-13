@@ -1,0 +1,79 @@
+.EditPage {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.EditPage h1 {
+  font-size: 35px;
+  margin-block: 20px;
+}
+
+.EditPage form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 50%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  box-shadow: 0 0 10px 10px #10101031;
+}
+
+.EditPage form input {
+  width: 100%;
+  background-color: var(--white);
+  color: var(--dark-blue);
+  padding: 10px 20px;
+  font-size: 18px;
+  border: 1px solid var(--dark-blue);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.EditPage form span {
+  width: 100%;
+  position: relative;
+}
+
+.EditPage form input:is(:hover, :focus) {
+  box-shadow: 0 0 10px 5px #ccc;
+}
+
+.EditPage .passwordContainer svg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  font-size: 30px;
+}
+
+.passwordContainer svg path {
+  color: var(--dark-blue);
+}
+
+.EditPage form [type="submit"]:hover {
+  transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  -moz-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  -o-transform: scale(1.01);
+  background-color: var(--red);
+  color: var(--white);
+  border-color: var(--white);
+}
