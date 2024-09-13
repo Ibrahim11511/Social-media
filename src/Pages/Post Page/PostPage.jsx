@@ -1,4 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
+import { FaUser } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./postpage.module.css";
 import { useContext, useEffect, useState } from "react";
@@ -66,12 +68,7 @@ export default function Post() {
             onClick={() => Navigate(`/profilePage/${postData?.author?.id}`)}
           />
         ) : (
-          <img
-            src={"/public/8380015-removebg-preview.png"}
-            alt="User"
-            className={styles.profileImage}
-            onClick={() => Navigate(`/profilePage/${postData?.author?.id}`)}
-          />
+          <FaUser className={styles.profileImage} style={{ padding: "5px" }} />
         )}
         <div className={styles.userInfo}>
           <Link

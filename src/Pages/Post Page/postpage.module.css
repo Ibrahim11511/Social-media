@@ -23,6 +23,13 @@
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  box-shadow: 0 0 10px 3px #10101031;
+  border: 3px solid var(--dark-blue);
 }
 
 .userInfo {

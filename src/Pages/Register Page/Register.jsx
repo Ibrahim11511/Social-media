@@ -1,3 +1,4 @@
+import { FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Styles from "../log in Page/login.module.css";
 import { FaEye } from "react-icons/fa";
@@ -81,14 +82,11 @@ export default function Register() {
           />
           <label htmlFor="file">Choose Your Profile Picture</label>
           <div className={Styles.image}>
-            <img
-              src={
-                registerValues.imagePreview
-                  ? registerValues.imagePreview
-                  : "/public/8380015-removebg-preview.png"
-              }
-              alt="Preview picture"
-            />
+            {registerValues.imagePreview ? (
+              <img src={registerValues.imagePreview} alt="Preview picture" />
+            ) : (
+              <FaUser />
+            )}
           </div>
         </div>
         <span className={Styles.passwordWrapper}>

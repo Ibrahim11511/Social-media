@@ -35,6 +35,12 @@
   object-position: center;
 }
 
+.image svg {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+
 .pictureWrapper {
   width: 100%;
   padding-inline: 20px;

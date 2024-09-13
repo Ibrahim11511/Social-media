@@ -4,6 +4,7 @@ import styles from "./post.module.css";
 import { useContext, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../../context/userContext";
+import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
 export default function Post({
   title,
@@ -50,12 +51,7 @@ export default function Post({
     <div className={styles.postContainer}>
       <div className={styles.userProfile}>
         {typeof userImage === "object" ? (
-          <img
-            src={"/public/8380015-removebg-preview.png"}
-            alt="User"
-            className={styles.profileImage}
-            onClick={() => Navigate(`/profilePage/${userID}`)}
-          />
+          <FaUser />
         ) : (
           <img
             src={userImage}
