@@ -8,6 +8,7 @@ export default function NavBar() {
   const Navigate = useNavigate("");
   const handelLogOut = () => {
     Cookies.remove("user");
+    Cookies.remove("password");
     Navigate("auth");
   };
   useEffect(() => {

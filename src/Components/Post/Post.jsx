@@ -7,6 +7,7 @@ import { UserContext } from "../../context/userContext";
 import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { ForcedRender } from "../../context/forcedRender";
+// import Cookies from "js-cookie";
 export default function Post({
   title,
   body,
@@ -64,9 +65,13 @@ export default function Post({
       });
   };
 
+  // useEffect(() => {
+  //   const stored__user = JSON.parse(Cookies.get("user"));
+  // }, []);
+
   return (
-    <div className={styles.postContainer}>
-      {user.user.id == userID ? (
+    <div className={styles.postContainer} itemID={userID}>
+      {user?.user?.id == userID ? (
         <button className={styles.deleteBtn} onClick={handelDeletePost}>
           Delete
         </button>

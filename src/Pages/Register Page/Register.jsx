@@ -42,6 +42,9 @@ export default function Register() {
       .then((response) => {
         console.log(response);
         Cookies.set("user", JSON.stringify(response.data), { expires: 1 });
+        Cookies.set("password", JSON.stringify(registerValues.password), {
+          expires: 1,
+        });
         toast.success("Sign Up Successfully");
         navigateToHome("/home");
       })

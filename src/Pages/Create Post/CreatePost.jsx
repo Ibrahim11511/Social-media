@@ -45,7 +45,7 @@ export default function CreatePost() {
         toast.success("Your Post Successfully Created");
       })
       .catch(function (error) {
-        Object.entries(error.response.data.errors).map(([, value]) =>
+        Object.entries(error?.response?.data?.errors).map(([, value]) =>
           toast.error(`${value}`)
         );
       });
@@ -90,7 +90,7 @@ export default function CreatePost() {
         name={user?.user?.name}
         postDate={"1 minute ago"}
         postID={""}
-        userID={""}
+        userID={user?.user?.id}
       />
     </div>
   );
