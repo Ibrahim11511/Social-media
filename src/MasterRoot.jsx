@@ -15,7 +15,6 @@ export default function Root() {
   useEffect(() => {
     setUser(() => getUserFromCookies());
   }, []);
-  console.log(user);
 
   return (
     <>

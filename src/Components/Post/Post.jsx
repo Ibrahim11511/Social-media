@@ -7,7 +7,6 @@ import { UserContext } from "../../context/userContext";
 import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { ForcedRender } from "../../context/forcedRender";
-// import Cookies from "js-cookie";
 export default function Post({
   title,
   body,
