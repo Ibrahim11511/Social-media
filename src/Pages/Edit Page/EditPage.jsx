@@ -30,7 +30,6 @@ export default function EditPage() {
       authorization: `Bearer ${user.token}`,
     };
     const storedPassword = getUserPassword().slice(1, -1);
-    console.log(storedPassword);
     switch (newData.currentPassword) {
       case "":
         toast.error("You Must Enter Your Current Password");

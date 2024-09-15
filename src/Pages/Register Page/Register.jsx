@@ -40,7 +40,6 @@ export default function Register() {
     axios
       .post("https://tarmeezacademy.com/api/v1/register", formData)
       .then((response) => {
-        console.log(response);
         Cookies.set("user", JSON.stringify(response.data), { expires: 1 });
         Cookies.set("password", JSON.stringify(registerValues.password), {
           expires: 1,

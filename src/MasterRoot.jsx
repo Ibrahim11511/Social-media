@@ -7,7 +7,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "./context/userContext";
 
 export default function Root() {
-  let { user, setUser } = useContext(UserContext);
+  let { setUser } = useContext(UserContext);
   const getUserFromCookies = () => {
     return JSON.parse(Cookies.get("user"));
   };
